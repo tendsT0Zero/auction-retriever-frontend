@@ -21,18 +21,10 @@ function HomeFooter() {
           {/* auction social media links */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
             <Link to={"#"}>
-              <img
-                src="/fblogo.png"
-                alt="Facebook"
-                className="h-6 w-6"
-              />
+              <img src="/fblogo.png" alt="Facebook" className="h-6 w-6" />
             </Link>
             <Link to={"#"}>
-              <img
-                src="/XLogo.png"
-                alt="Twitter"
-                className="h-6 w-6"
-              />
+              <img src="/XLogo.png" alt="Twitter" className="h-6 w-6" />
             </Link>
             <Link to={"#"}>
               <img
