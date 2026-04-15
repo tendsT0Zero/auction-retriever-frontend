@@ -1,0 +1,2169 @@
+{
+  "info": {
+    "_postman_id": "25779e99-0015-45fd-b62e-faf2c5a774f5",
+    "name": "milesbanks154",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52926385",
+    "_collection_link": "https://go.postman.co/collection/52926385-25779e99-0015-45fd-b62e-faf2c5a774f5?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "Register",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "if (jsonData && jsonData.status==true) {\r",
+                  "    pm.globals.set('otp', jsonData.data.otp);\r",
+                  "    console.log('Token set globally: ' + jsonData.otp);\r",
+                  "} else {\r",
+                  "    console.error('Token not found in the response');\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  "// const names = [\"John\", \"Jane\", \"Michael\", \"Emily\", \"David\", \"Sarah\", \"Robert\", \"Jessica\", \"Daniel\", \"Laura\"];\r",
+                  "// const randomName = names[Math.floor(Math.random() * names.length)];\r",
+                  "// pm.globals.set(\"name\", randomName);\r",
+                  "\r",
+                  "// const domains = [\"example.com\", \"test.com\", \"email.com\", \"demo.com\", \"gmail.com\", \"yahoo.com\"];\r",
+                  "// const randomNumber = Math.floor(Math.random() * 1000);  // Generate a random number to ensure uniqueness\r",
+                  "// const randomDomain = domains[Math.floor(Math.random() * domains.length)];\r",
+                  "\r",
+                  "// const email = `${randomName}${randomNumber}@${randomDomain}`;\r",
+                  "// pm.globals.set(\"email\", email);\r",
+                  "\r",
+                  "// // Generate a phone number without formatting\r",
+                  "// const countryCode = \"88\"; // Changed to 88 as a string for concatenation\r",
+                  "// const areaCode = Math.floor(100 + Math.random() * 900);\r",
+                  "// const centralOfficeCode = Math.floor(100 + Math.random() * 900);\r",
+                  "// const lineNumber = Math.floor(1000 + Math.random() * 900);\r",
+                  "\r",
+                  "// // Combine to form a number-like string or number\r",
+                  "// const phone = parseInt(`${countryCode}${areaCode}${centralOfficeCode}${lineNumber}`, 10);\r",
+                  "// pm.globals.set(\"phone\", phone);"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "{{name}}",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text"
+                },
+                {
+                  "key": "password",
+                  "value": "Pa$$w0rd!",
+                  "type": "text"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "Pa$$w0rd!",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/register",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "register"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Resend OTP",
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/resend-otp",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "resend-otp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Verify OTP",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "if (jsonData && jsonData.token) {\r",
+                  "    pm.globals.set('token', jsonData.token);\r",
+                  "    console.log('Token set globally: ' + jsonData.token);\r",
+                  "} else {\r",
+                  "    console.error('Token not found in the response');\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text"
+                },
+                {
+                  "key": "otp",
+                  "value": "{{otp}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/verify-otp",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "verify-otp"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Login",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Check if token exists\r",
+                  "if (response.token) {\r",
+                  "    // Save token to environment variable\r",
+                  "    pm.environment.set(\"token\", response.token);\r",
+                  "\r",
+                  "    console.log(\"JWT Token saved:\", response.token);\r",
+                  "} else {\r",
+                  "    console.log(\"Token not found in response\");\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "{{password}}",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "zobayerhosen2345@gmail.com",
+                  "type": "text",
+                  "uuid": "b47fd447-e3c3-475d-8587-3244c3896f09"
+                },
+                {
+                  "key": "password",
+                  "value": "Pa$$w0rd!",
+                  "type": "text",
+                  "uuid": "5342abb6-91bc-460c-b873-311fecd97168"
+                },
+                {
+                  "key": "email",
+                  "value": "raveba8910@fun4k.com",
+                  "type": "text",
+                  "uuid": "9b3715ac-8d30-4245-9916-3dc905ec36b1",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "Pa$$w0rd!",
+                  "type": "text",
+                  "uuid": "dddbbd1c-6153-4742-8d07-4c845fd91977",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "kefaci5900@availors.com",
+                  "type": "text",
+                  "uuid": "ce3abb91-77c7-4608-89c3-c2ead6ceee13",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "hojifo1784@cosdas.com",
+                  "description": "subscription inactive",
+                  "type": "text",
+                  "uuid": "ee4d10ed-affa-4f06-bb66-397bd759fed9",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "sebebi9233@cosdas.com",
+                  "type": "text",
+                  "uuid": "73aa029f-9012-46e6-901f-f5a3ca5fb7f9",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/login",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "description": "### Login Endpoint\n\nThis API endpoint allows the user to log in by providing the required credentials.\n\n#### Request Body\n\n- **email** (text) - The email address of the user.\n    \n\n#### Response\n\n- **status** - Indicates the status of the request.\n    \n- **message** - A message related to the request status.\n    \n- **code** - The status code of the response.\n    \n- **token_type** - The type of token received.\n    \n- **token** - The authentication token.\n    \n- **expires_in** - The expiration time of the token.\n    \n- **data** - Additional user data including id, name, email, phone, address, longitude, latitude, avatar, role, status, is_new, available, gender, and balance.\n    \n\n``` json\n{\n    \"status\": true,\n    \"message\": \"Login successful\",\n    \"code\": 200,\n    \"token_type\": \"bearer\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3dlZ293b2xmLmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3MzU5OTMxNjgsIm5iZiI6MTczNTk5MzE2OCwianRpIjoiZWdDM01VR0VhblNKTVhlOCIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.HPzG1VLPQDZXx-OHpfAC2fUQI9aQ8m94-ufZZMPojpA\",\n    \"expires_in\": 0,\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"User\",\n        \"email\": \"user@user.com\",\n        \"phone\": \"018895522\",\n        \"address\": null,\n        \"longitude\": null,\n        \"latitude\": null,\n        \"avatar\": \"https://wegowolf.com/uploads/user/avatar/1735703775-922-imgpsh-fullsize-anim-2-4.png\",\n        \"role\": \"customer\",\n        \"status\": \"active\",\n        \"is_new\": \"yes\",\n        \"available\": \"yes\",\n        \"gender\": \"male\",\n        \"balance\": \"0.00\"\n    }\n}\n\n ```"
+          },
+          "response": []
+        },
+        {
+          "name": "Forget Password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "email",
+                  "value": "zobayerhosen2345@gmail.com",
+                  "type": "text",
+                  "uuid": "7e8506f4-1a03-4efa-8769-3202f43c832c"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/forget-password",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "forget-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refresh Token",
+          "event": [
+            {
+              "listen": "test",
+              "script": {
+                "exec": [
+                  "var jsonData = pm.response.json();\r",
+                  "\r",
+                  "let response = pm.response.json();\r",
+                  "\r",
+                  "// Check if token exists\r",
+                  "if (response.token) {\r",
+                  "    // Save token to environment variable\r",
+                  "    pm.environment.set(\"token\", response.token);\r",
+                  "\r",
+                  "    console.log(\"JWT Token saved:\", response.token);\r",
+                  "} else {\r",
+                  "    console.log(\"Token not found in response\");\r",
+                  "}"
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            },
+            {
+              "listen": "prerequest",
+              "script": {
+                "exec": [
+                  ""
+                ],
+                "type": "text/javascript",
+                "packages": {},
+                "requests": {}
+              }
+            }
+          ],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/refresh-token",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "refresh-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/logout",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "logout"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "User details",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/me",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "me"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update profile details",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "name",
+                  "value": "Kitty",
+                  "type": "text"
+                },
+                {
+                  "key": "phone",
+                  "value": "01215565455",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/C:/Users/bdCalling/Downloads/images (1).jpeg",
+                  "disabled": true
+                },
+                {
+                  "key": "password",
+                  "value": "123456789s",
+                  "description": "//nullable",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "123456789s",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "address",
+                  "value": "dhaka",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "gender",
+                  "value": "male",
+                  "type": "text",
+                  "uuid": "b5156fb7-f7ba-4b17-a7a2-a14ba83a900e",
+                  "disabled": true
+                },
+                {
+                  "key": "country",
+                  "value": "bd",
+                  "type": "text",
+                  "uuid": "320675fd-6793-4c1d-900a-0065bda31975",
+                  "disabled": true
+                },
+                {
+                  "key": "zip_code",
+                  "value": "5200",
+                  "type": "text",
+                  "uuid": "35f97aaa-4fd2-4ec7-ae15-8957be470b91",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/update-profile",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "update-profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "change password",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "current_password",
+                  "value": "12345678",
+                  "type": "text",
+                  "description": "current_password"
+                },
+                {
+                  "key": "new_password",
+                  "value": "123456789",
+                  "type": "text",
+                  "description": "new_password"
+                },
+                {
+                  "key": "new_password_confirmation",
+                  "value": "123456789",
+                  "description": "new_password_confirmation",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/change-password",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "change-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Profile Avatar",
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "avatar",
+                  "type": "file",
+                  "src": "/home/zobayer/project/auction-retriver/public/aucation_card_img/aucation_img3.png"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/update-avatar",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "update-avatar"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "OTP Token",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "otp",
+                  "value": "228859",
+                  "type": "text"
+                },
+                {
+                  "key": "email",
+                  "value": "{{email}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/otp-token",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "otp-token"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Reset Password",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "password",
+                  "value": "1234567890",
+                  "type": "text"
+                },
+                {
+                  "key": "password_confirmation",
+                  "value": "1234567890",
+                  "type": "text"
+                },
+                {
+                  "key": "token",
+                  "value": "dWRbUJ1KBgNJp9dci5GO7G8g9aR8Ot3jgvpLx8LKgCTQqS3mqrOxnOKPZYv",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/reset-password",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "reset-password"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Profile Delete",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/delete-profile",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "delete-profile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "google login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "token",
+                  "value": "REPLACE_WITH_GOOGLE_OAUTH_ACCESS_TOKEN",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/google/callback",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "google",
+                "callback"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Social",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "token",
+                  "value": "REPLACE_WITH_GOOGLE_OAUTH_ACCESS_TOKEN",
+                  "type": "text"
+                },
+                {
+                  "key": "provider",
+                  "value": "google",
+                  "description": "google, facebook",
+                  "type": "text"
+                },
+                {
+                  "key": "role",
+                  "value": "customer",
+                  "description": "owner, renter",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/social-login",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "social-login"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "plans",
+      "item": [
+        {
+          "name": "plans",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/subscription/plans",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "subscription",
+                "plans"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "setup intent",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "payment_method",
+                  "value": "stripe",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/setup-intent",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "setup-intent"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "subcreption create",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "2",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "pm_card_visa",
+                  "type": "text",
+                  "description": "pm_visa_card"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/create",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "create"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "update subscription",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "3",
+                  "type": "text"
+                },
+                {
+                  "key": "payment_method",
+                  "value": "pm_visa_card",
+                  "type": "text",
+                  "uuid": "0e6c4a49-4ae3-4af0-b36b-645282534b1f"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/update",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "update"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "cancel subscription",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/cancel",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "cancel"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "resume subscription",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "payment_method",
+                  "value": "stripe",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/resume",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "resume"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "subscription status",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "payment_method",
+                  "value": "stripe",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auth/subscription/status",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auth",
+                "subscription",
+                "status"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "auction",
+      "item": [
+        {
+          "name": "list",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/auction",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auction"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "12",
+                  "description": "set per_page to get paginate data | default 18",
+                  "disabled": true
+                },
+                {
+                  "key": "current_page",
+                  "value": "1",
+                  "description": "set current_page to get paginate data| default 1",
+                  "disabled": true
+                },
+                {
+                  "key": "state",
+                  "value": "AR",
+                  "disabled": true
+                },
+                {
+                  "key": "city",
+                  "value": " Cherokee Village",
+                  "disabled": true
+                },
+                {
+                  "key": "country",
+                  "value": "USa",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": "Land",
+                  "disabled": true
+                },
+                {
+                  "key": "keyword",
+                  "value": " ",
+                  "disabled": true
+                },
+                {
+                  "key": "bid_min",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "bid_max",
+                  "value": " 1077",
+                  "disabled": true
+                },
+                {
+                  "key": "auction_date_from",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "auction_date_to",
+                  "value": "",
+                  "disabled": true
+                },
+                {
+                  "key": "sort_by",
+                  "value": " scraped_at",
+                  "disabled": true
+                },
+                {
+                  "key": "sort_dir",
+                  "value": " desc",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "filters",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/auction/filter-options",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auction",
+                "filter-options"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "view",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "plan_id",
+                  "value": "1",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "payment_method",
+                  "value": "stripe",
+                  "type": "text",
+                  "disabled": true
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{base}}/auction/{{auction_id}}/view",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auction",
+                "{{auction_id}}",
+                "view"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "save | remove",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": {
+              "raw": "{{base}}/auction/{{auction_id}}/save",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auction",
+                "{{auction_id}}",
+                "save"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "save list",
+          "protocolProfileBehavior": {
+            "followOriginalHttpMethod": true
+          },
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{token}}",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "url": {
+              "raw": "{{base}}/auction/saved",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "auction",
+                "saved"
+              ],
+              "query": [
+                {
+                  "key": "per_page",
+                  "value": "10",
+                  "description": "set per_page to get paginate data",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "current_page",
+                  "value": "1",
+                  "description": "set current_page to get paginate data",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "state",
+                  "value": " AR",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "city",
+                  "value": " Cherokee Village",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "county",
+                  "value": " ",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "type",
+                  "value": " Land",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "keyword",
+                  "value": " 10",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "bid_min",
+                  "value": "100",
+                  "disabled": true
+                },
+                {
+                  "key": "bid_max",
+                  "value": "2000",
+                  "disabled": true
+                },
+                {
+                  "key": "auction_date_from",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "auction_date_to",
+                  "value": "",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "sort_by",
+                  "value": " scraped_at",
+                  "type": "text",
+                  "disabled": true
+                },
+                {
+                  "key": "sort_dir",
+                  "value": " asc",
+                  "description": " desc | asc",
+                  "disabled": true
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "partials",
+      "item": [
+        {
+          "name": "settings",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/settings",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "settings"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "random auction",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/home/random/auction",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "home",
+                "random",
+                "auction"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "countries",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/countries",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "countries"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "states",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base}}/states?country=us",
+              "host": [
+                "{{base}}"
+              ],
+              "path": [
+                "states"
+              ],
+              "query": [
+                {
+                  "key": "country",
+                  "value": "us",
+                  "description": "set county to get specific states name of the country",
+                  "type": "text"
+                }
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "listing scrape",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "text/html,*/*; q=0.01",
+            "type": "text"
+          },
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/120.0.0.0 Safari/537.36",
+            "type": "text"
+          },
+          {
+            "key": "X-Requested-With",
+            "value": "XMLHttpRequest",
+            "type": "text"
+          },
+          {
+            "key": "Origin",
+            "value": "https://www.bid4assets.com",
+            "type": "text"
+          },
+          {
+            "key": "Referer",
+            "value": "https://www.bid4assets.com/real-estate-auctions",
+            "type": "text"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/x-www-form-urlencoded; charset=UTF-8",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "channelCode",
+              "value": "22",
+              "type": "text"
+            },
+            {
+              "key": "pageSize",
+              "value": "50",
+              "type": "text"
+            },
+            {
+              "key": "currentPage",
+              "value": "1",
+              "type": "text"
+            },
+            {
+              "key": "categoryCode",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "key": "sortOrderColumn",
+              "value": "Featured",
+              "type": "text"
+            },
+            {
+              "key": "sortOrderDirection",
+              "value": "DESC",
+              "type": "text"
+            },
+            {
+              "key": "specialtyChannel",
+              "value": "",
+              "type": "text"
+            },
+            {
+              "key": "locatedState",
+              "value": "",
+              "type": "text"
+            }
+          ]
+        },
+        "url": {
+          "raw": "https://www.bid4assets.com/channel/auctions/get",
+          "protocol": "https",
+          "host": [
+            "www",
+            "bid4assets",
+            "com"
+          ],
+          "path": [
+            "channel",
+            "auctions",
+            "get"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auction dotcom scrape",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "content-type",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "origin",
+            "value": " https://www.auction.com",
+            "type": "text"
+          },
+          {
+            "key": "referer",
+            "value": " https://www.auction.com/",
+            "type": "text"
+          },
+          {
+            "key": "auction-graph-source",
+            "value": " auctioncom",
+            "type": "text"
+          },
+          {
+            "key": "user-agent",
+            "value": " Mozilla/5.0",
+            "type": "text"
+          },
+          {
+            "key": "Cookie",
+            "value": "incap_ses_1788_825466=nn2fAY0HshG2S0KnHkHQGKERwmkAAAAA0KpNFAsoisSORireGkAYgQ==; incap_ses_1686_825466=rYsgBUCGqSzj4tmOoeBlF8MSwmkAAAAAxeDZg3U0W4HxTCZRUdG73g==; BRID=3af694fb-7ada-4a35-8918-2866e3020106; AMP_MKTG_91f77d224a=JTdCJTdE; visid_incap_2075278=iBKS3I+HQQ+UGbd35nHOUfASwmkAAAAAQUIPAAAAAABFgyWcZh2tWUahbOaFTwCU; incap_ses_227_2075278=o/k0UBSUaVCkLYV63HcmA/ISwmkAAAAAGzOsfc/fG5c7ACrU7C4qAw==; _gcl_au=1.1.1771920429.1774326517; _ga=GA1.1.1864146841.1774326514; _fbp=fb.1.1774326562162.790542039318493620; visid_incap_825466=NWMWDOGNTiqZYlnzztL48dRvsWkAAAAAQUIPAAAAAAAb6RjewB6fqL6IDz8nCycU; incap_ses_50_825466=Pgb+cALzGxc8nheOzKKxABDgumkAAAAAMcpJuI70RqIWbpQbEG/xZw==; incap_ses_227_825466=bXwWfo/RlGnbG4Z63HcmAwwUwmkAAAAA+xkyO75RnCIby3xY9ko3zg==; incap_ses_226_825466=+GTQZ5BEk2JZBN2WYuoiA2QtwmkAAAAAFraq2JID1H6RI1Pg6YBrqg==; incap_ses_2102_2075278=+5oXNrAhJTJ3RbFYZs4rHWotwmkAAAAAbe8ARKUHFKS4uozRrWEvQw==; incap_ses_226_2075278=C8OBMJG5iVEGGd2WYuoiA3AtwmkAAAAAF312veO70bg7cfRyR9YhHw==; incap_ses_2103_825466=SxBqCMxciAAIxgeDjFsvHYUtwmkAAAAAPP6oZt3YHaheo0O6mYXHBA==; incap_ses_2102_825466=zHT2IsawtgH84bFYZs4rHd4twmkAAAAAnYjrcc+gVuS3CXzfJ56/1Q==; nlbi_825466=E/qAFe8TIBVcf1nGumS1YQAAAABDQHSyEAEloxFNcDjX++1B; incap_ses_1106_825466=r4/7TLhOf1lYxCgjSU1ZD9BEwmkAAAAAo3X9su5thPCpGfQlzrD8Nw==; incap_ses_625_825466=ptkBFMGWKwdAmgkzWnKsCNJEwmkAAAAActkndtgaSCK2WxTCdcwOlA==; incap_ses_1106_2075278=24neA7Grfh2ZxygjSU1ZD9REwmkAAAAAYG4SxngbQiA8II8UmFhAtg==; nlbi_2075278=SNbxZnRzi1ASUZzseaK5wwAAAACV6HtyUwIyawrwOqKh2IMn; incap_ses_608_2075278=BKYORHrYMh5gPk2b8wxwCNZEwmkAAAAAxE2ktJd6JKMl0zYLNh4QzQ==; OptanonAlertBoxClosed=2026-03-24T08:01:26.498Z; incap_ses_1140_825466=r8+uJrbzZnHyOfMEGxjSD0tFwmkAAAAA7jsyz3lWDDqhvNohSOOktQ==; incap_ses_1085_825466=R/ELLsZl2TePwp3y57EOD0tFwmkAAAAA0otYPZBC7fgLppvMz8nwRw==; OptanonConsent=isGpcEnabled=0&datestamp=Tue+Mar+24+2026+14%3A03%3A24+GMT%2B0600+(Bangladesh+Standard+Time)&version=202308.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=19fd6c57-deb9-40dd-867c-1595b9b6381c&interactionCount=3&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false&geolocation=GB%3BENG; _ga_0485FSVCD8=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; _ga_3XVF7B7N2B=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; AMP_91f77d224a=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjIzYWY2OTRmYi03YWRhLTRhMzUtODkxOC0yODY2ZTMwMjAxMDYlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzc0MzM5MjgwMTc4JTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc3NDM0MDI3MDAyNCUyQyUyMmxhc3RFdmVudElkJTIyJTNBMzclMkMlMjJwYWdlQ291bnRlciUyMiUzQTMlN0Q=; incap_ses_572_825466=MVg3bDAy9zKY4gDRJifwB65IwmkAAAAAPudX3iA8ynx+2UA58micKg==",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"query\": \"query resiSearch($filters: ListingCompatabilityFilters!) { seek_listings_from_filters(filters: $filters) { total_count content { ... on Listing { listing_id listing_status primary_photo listing_page_path formatted_address(format: DOUBLE_LINE) auction {start_date end_date starting_bid } primary_property { summary { structure_type_code structure_type_group } } } } } }\",\r\n  \"variables\": {\r\n    \"filters\": {\r\n      \"listing_type\": \"active\",\r\n      \"usecode_property_type\": \"resi_sfr\",\r\n      \"sort\": \"auction_date_order,resi_sort_v2\",\r\n      \"limit\": 10,\r\n      \"version\": 1,\r\n      \"offset\": 0\r\n    }\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://graph.auction.com/graphql",
+          "protocol": "https",
+          "host": [
+            "graph",
+            "auction",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "auction dotcom scrape ID",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "accept",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "content-type",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "origin",
+            "value": " https://www.auction.com",
+            "type": "text"
+          },
+          {
+            "key": "referer",
+            "value": " https://www.auction.com/",
+            "type": "text"
+          },
+          {
+            "key": "auction-graph-source",
+            "value": " auctioncom",
+            "type": "text"
+          },
+          {
+            "key": "user-agent",
+            "value": " Mozilla/5.0",
+            "type": "text"
+          },
+          {
+            "key": "Cookie",
+            "value": "incap_ses_1788_825466=nn2fAY0HshG2S0KnHkHQGKERwmkAAAAA0KpNFAsoisSORireGkAYgQ==; incap_ses_1686_825466=rYsgBUCGqSzj4tmOoeBlF8MSwmkAAAAAxeDZg3U0W4HxTCZRUdG73g==; BRID=3af694fb-7ada-4a35-8918-2866e3020106; AMP_MKTG_91f77d224a=JTdCJTdE; visid_incap_2075278=iBKS3I+HQQ+UGbd35nHOUfASwmkAAAAAQUIPAAAAAABFgyWcZh2tWUahbOaFTwCU; incap_ses_227_2075278=o/k0UBSUaVCkLYV63HcmA/ISwmkAAAAAGzOsfc/fG5c7ACrU7C4qAw==; _gcl_au=1.1.1771920429.1774326517; _ga=GA1.1.1864146841.1774326514; _fbp=fb.1.1774326562162.790542039318493620; visid_incap_825466=NWMWDOGNTiqZYlnzztL48dRvsWkAAAAAQUIPAAAAAAAb6RjewB6fqL6IDz8nCycU; incap_ses_50_825466=Pgb+cALzGxc8nheOzKKxABDgumkAAAAAMcpJuI70RqIWbpQbEG/xZw==; incap_ses_227_825466=bXwWfo/RlGnbG4Z63HcmAwwUwmkAAAAA+xkyO75RnCIby3xY9ko3zg==; incap_ses_226_825466=+GTQZ5BEk2JZBN2WYuoiA2QtwmkAAAAAFraq2JID1H6RI1Pg6YBrqg==; incap_ses_2102_2075278=+5oXNrAhJTJ3RbFYZs4rHWotwmkAAAAAbe8ARKUHFKS4uozRrWEvQw==; incap_ses_226_2075278=C8OBMJG5iVEGGd2WYuoiA3AtwmkAAAAAF312veO70bg7cfRyR9YhHw==; incap_ses_2103_825466=SxBqCMxciAAIxgeDjFsvHYUtwmkAAAAAPP6oZt3YHaheo0O6mYXHBA==; incap_ses_2102_825466=zHT2IsawtgH84bFYZs4rHd4twmkAAAAAnYjrcc+gVuS3CXzfJ56/1Q==; nlbi_825466=E/qAFe8TIBVcf1nGumS1YQAAAABDQHSyEAEloxFNcDjX++1B; incap_ses_1106_825466=r4/7TLhOf1lYxCgjSU1ZD9BEwmkAAAAAo3X9su5thPCpGfQlzrD8Nw==; incap_ses_625_825466=ptkBFMGWKwdAmgkzWnKsCNJEwmkAAAAActkndtgaSCK2WxTCdcwOlA==; incap_ses_1106_2075278=24neA7Grfh2ZxygjSU1ZD9REwmkAAAAAYG4SxngbQiA8II8UmFhAtg==; nlbi_2075278=SNbxZnRzi1ASUZzseaK5wwAAAACV6HtyUwIyawrwOqKh2IMn; incap_ses_608_2075278=BKYORHrYMh5gPk2b8wxwCNZEwmkAAAAAxE2ktJd6JKMl0zYLNh4QzQ==; OptanonAlertBoxClosed=2026-03-24T08:01:26.498Z; incap_ses_1140_825466=r8+uJrbzZnHyOfMEGxjSD0tFwmkAAAAA7jsyz3lWDDqhvNohSOOktQ==; incap_ses_1085_825466=R/ELLsZl2TePwp3y57EOD0tFwmkAAAAA0otYPZBC7fgLppvMz8nwRw==; OptanonConsent=isGpcEnabled=0&datestamp=Tue+Mar+24+2026+14%3A03%3A24+GMT%2B0600+(Bangladesh+Standard+Time)&version=202308.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=19fd6c57-deb9-40dd-867c-1595b9b6381c&interactionCount=3&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false&geolocation=GB%3BENG; _ga_0485FSVCD8=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; _ga_3XVF7B7N2B=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; AMP_91f77d224a=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjIzYWY2OTRmYi03YWRhLTRhMzUtODkxOC0yODY2ZTMwMjAxMDYlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzc0MzM5MjgwMTc4JTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc3NDM0MDI3MDAyNCUyQyUyMmxhc3RFdmVudElkJTIyJTNBMzclMkMlMjJwYWdlQ291bnRlciUyMiUzQTMlN0Q=; incap_ses_572_825466=MVg3bDAy9zKY4gDRJifwB65IwmkAAAAAPudX3iA8ynx+2UA58micKg==",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n  \"query\": \"query getSegments($listingIds: [ID!]!) { online_segments_batched(filters: { listing_ids: $listingIds }) { listing_id start_date initial_end_date starting_bid_amount segment_status online_segment_id } }\",\r\n  \"variables\": {\r\n    \"listingIds\": [\"2007295\"]\r\n  }\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://graph.auction.com/graphql",
+          "protocol": "https",
+          "host": [
+            "graph",
+            "auction",
+            "com"
+          ],
+          "path": [
+            "graphql"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "realitybid single property",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "content-type",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "origin",
+            "value": "https://www.realtybid.com",
+            "type": "text"
+          },
+          {
+            "key": "referer",
+            "value": "https://www.realtybid.com/",
+            "type": "text"
+          },
+          {
+            "key": "user-agent",
+            "value": "",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Cookie",
+            "value": "_gcl_au=1.1.2132038567.1774503598; _gid=GA1.2.120616062.1774503599; _fbp=fb.1.1774503599425.3898309691487126; _ga=GA1.1.983802368.1774503598; _ga_XFKJETS2FX=GS2.1.s1774503598$o1$g1$t1774504613$j45$l0$h1645203958",
+            "type": "text"
+          },
+          {
+            "key": "apigw-requestid",
+            "value": "a0Sbbi30IAMESUA=",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://api.realtybid.com/public/property/819998/details",
+          "protocol": "https",
+          "host": [
+            "api",
+            "realtybid",
+            "com"
+          ],
+          "path": [
+            "public",
+            "property",
+            "819998",
+            "details"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "realitybid index",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "accept",
+            "value": " application/json",
+            "type": "text"
+          },
+          {
+            "key": "content-type",
+            "value": " application/json",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "origin",
+            "value": "https://www.realtybid.com",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "referer",
+            "value": "https://www.realtybid.com/",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "auction-graph-source",
+            "value": " auctioncom",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "user-agent",
+            "value": " Mozilla/5.0",
+            "type": "text",
+            "disabled": true
+          },
+          {
+            "key": "Cookie",
+            "value": "incap_ses_1788_825466=nn2fAY0HshG2S0KnHkHQGKERwmkAAAAA0KpNFAsoisSORireGkAYgQ==; incap_ses_1686_825466=rYsgBUCGqSzj4tmOoeBlF8MSwmkAAAAAxeDZg3U0W4HxTCZRUdG73g==; BRID=3af694fb-7ada-4a35-8918-2866e3020106; AMP_MKTG_91f77d224a=JTdCJTdE; visid_incap_2075278=iBKS3I+HQQ+UGbd35nHOUfASwmkAAAAAQUIPAAAAAABFgyWcZh2tWUahbOaFTwCU; incap_ses_227_2075278=o/k0UBSUaVCkLYV63HcmA/ISwmkAAAAAGzOsfc/fG5c7ACrU7C4qAw==; _gcl_au=1.1.1771920429.1774326517; _ga=GA1.1.1864146841.1774326514; _fbp=fb.1.1774326562162.790542039318493620; visid_incap_825466=NWMWDOGNTiqZYlnzztL48dRvsWkAAAAAQUIPAAAAAAAb6RjewB6fqL6IDz8nCycU; incap_ses_50_825466=Pgb+cALzGxc8nheOzKKxABDgumkAAAAAMcpJuI70RqIWbpQbEG/xZw==; incap_ses_227_825466=bXwWfo/RlGnbG4Z63HcmAwwUwmkAAAAA+xkyO75RnCIby3xY9ko3zg==; incap_ses_226_825466=+GTQZ5BEk2JZBN2WYuoiA2QtwmkAAAAAFraq2JID1H6RI1Pg6YBrqg==; incap_ses_2102_2075278=+5oXNrAhJTJ3RbFYZs4rHWotwmkAAAAAbe8ARKUHFKS4uozRrWEvQw==; incap_ses_226_2075278=C8OBMJG5iVEGGd2WYuoiA3AtwmkAAAAAF312veO70bg7cfRyR9YhHw==; incap_ses_2103_825466=SxBqCMxciAAIxgeDjFsvHYUtwmkAAAAAPP6oZt3YHaheo0O6mYXHBA==; incap_ses_2102_825466=zHT2IsawtgH84bFYZs4rHd4twmkAAAAAnYjrcc+gVuS3CXzfJ56/1Q==; nlbi_825466=E/qAFe8TIBVcf1nGumS1YQAAAABDQHSyEAEloxFNcDjX++1B; incap_ses_1106_825466=r4/7TLhOf1lYxCgjSU1ZD9BEwmkAAAAAo3X9su5thPCpGfQlzrD8Nw==; incap_ses_625_825466=ptkBFMGWKwdAmgkzWnKsCNJEwmkAAAAActkndtgaSCK2WxTCdcwOlA==; incap_ses_1106_2075278=24neA7Grfh2ZxygjSU1ZD9REwmkAAAAAYG4SxngbQiA8II8UmFhAtg==; nlbi_2075278=SNbxZnRzi1ASUZzseaK5wwAAAACV6HtyUwIyawrwOqKh2IMn; incap_ses_608_2075278=BKYORHrYMh5gPk2b8wxwCNZEwmkAAAAAxE2ktJd6JKMl0zYLNh4QzQ==; OptanonAlertBoxClosed=2026-03-24T08:01:26.498Z; incap_ses_1140_825466=r8+uJrbzZnHyOfMEGxjSD0tFwmkAAAAA7jsyz3lWDDqhvNohSOOktQ==; incap_ses_1085_825466=R/ELLsZl2TePwp3y57EOD0tFwmkAAAAA0otYPZBC7fgLppvMz8nwRw==; OptanonConsent=isGpcEnabled=0&datestamp=Tue+Mar+24+2026+14%3A03%3A24+GMT%2B0600+(Bangladesh+Standard+Time)&version=202308.2.0&browserGpcFlag=0&isIABGlobal=false&hosts=&consentId=19fd6c57-deb9-40dd-867c-1595b9b6381c&interactionCount=3&landingPath=NotLandingPage&groups=C0001%3A1%2CC0002%3A1%2CC0003%3A1%2CC0004%3A1&AwaitingReconsent=false&geolocation=GB%3BENG; _ga_0485FSVCD8=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; _ga_3XVF7B7N2B=GS2.1.s1774339279$o3$g1$t1774340269$j60$l0$h0; AMP_91f77d224a=JTdCJTIyZGV2aWNlSWQlMjIlM0ElMjIzYWY2OTRmYi03YWRhLTRhMzUtODkxOC0yODY2ZTMwMjAxMDYlMjIlMkMlMjJzZXNzaW9uSWQlMjIlM0ExNzc0MzM5MjgwMTc4JTJDJTIyb3B0T3V0JTIyJTNBZmFsc2UlMkMlMjJsYXN0RXZlbnRUaW1lJTIyJTNBMTc3NDM0MDI3MDAyNCUyQyUyMmxhc3RFdmVudElkJTIyJTNBMzclMkMlMjJwYWdlQ291bnRlciUyMiUzQTMlN0Q=; incap_ses_572_825466=MVg3bDAy9zKY4gDRJifwB65IwmkAAAAAPudX3iA8ynx+2UA58micKg==",
+            "type": "text",
+            "disabled": true
+          }
+        ],
+        "url": {
+          "raw": "https://api.realtybid.com/public/search/listings?pageSize=100&currentPage=1",
+          "protocol": "https",
+          "host": [
+            "api",
+            "realtybid",
+            "com"
+          ],
+          "path": [
+            "public",
+            "search",
+            "listings"
+          ],
+          "query": [
+            {
+              "key": "pageSize",
+              "value": "100",
+              "type": "text"
+            },
+            {
+              "key": "currentPage",
+              "value": "1",
+              "type": "text"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "single data scrape",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "User-Agent",
+            "value": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 Chrome/122.0.0.0 Safari/537.36",
+            "type": "text"
+          },
+          {
+            "key": "Accept",
+            "value": "text/html,application/xhtml+xml",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "https://www.bid4assets.com/auction/index/1270230",
+          "protocol": "https",
+          "host": [
+            "www",
+            "bid4assets",
+            "com"
+          ],
+          "path": [
+            "auction",
+            "index",
+            "1270230"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "bearer"
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base",
+      "value": "",
+      "disabled": true
+    },
+    {
+      "key": "token",
+      "value": "",
+      "disabled": true
+    },
+    {
+      "key": "base",
+      "value": ""
+    }
+  ]
+}
