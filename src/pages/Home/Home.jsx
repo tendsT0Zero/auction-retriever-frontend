@@ -109,27 +109,27 @@ const buildPlanForHome = (plan, fallback) => {
 const benefits = [
   {
     id: 1,
-    icon: "../public/icons/clock-circle.png",
+    icon: "/icons/clock-circle.png",
     title: "Save Hours Every Week",
     description:
       "Stop manually checking multiple auction sites. We do it for you automatically.",
   },
   {
     id: 2,
-    icon: "../public/icons/Bell.png",
+    icon: "/icons/Bell.png",
     title: "Never Miss an Opportunity",
     description: "Get notified of new listings as soon as they're available.",
   },
   {
     id: 3,
-    icon: "../public/icons/Star.png",
+    icon: "/icons/Star.png",
     title: "Save Your Favourites",
     description:
       "Bookmark listings you're interested in and access them anytime.",
   },
   {
     id: 4,
-    icon: "../public/icons/X-Circle.png",
+    icon: "/icons/X-Circle.png",
     title: "Cancel Anytime",
     description:
       "No long-term contracts. Cancel your subscription with one click.",

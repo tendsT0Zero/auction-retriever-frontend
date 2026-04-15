@@ -4,21 +4,21 @@ import React from "react";
 const auctionOpportunities = [
   {
     id: 1,
-    iconUrl: "../public/Search.png",
+    iconUrl: "/Search.png",
     title: "Multi Platform Auction Search",
     description:
       "Instantly browse property auctions from multiple auction websites in one unified dashboard.",
   },
   {
     id: 2,
-    iconUrl: "../public/Notification.png",
+    iconUrl: "/Notification.png",
     title: "Powerful Property Filters",
     description:
       "Quickly filter auctions by state, county, property type, starting bid, and auction date to find deals that fit your strategy.",
   },
   {
     id: 3,
-    iconUrl: "../public/digesticon.png",
+    iconUrl: "/digesticon.png",
 
     title: "Weekly Auction Digest",
     description:

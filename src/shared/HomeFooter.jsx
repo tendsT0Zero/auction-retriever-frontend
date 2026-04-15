@@ -9,7 +9,7 @@ function HomeFooter() {
           <div>
             <div className="flex items-center justify-center gap-2 sm:justify-start">
               <img
-                src="../public/auction-icon.png"
+                src="/auction-icon.png"
                 alt="auction icon"
                 className="h-7 w-7"
               />
