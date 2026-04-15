@@ -104,12 +104,8 @@
             },
             "url": {
               "raw": "{{base}}/register",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "register"
-              ]
+              "host": ["{{base}}"],
+              "path": ["register"]
             }
           },
           "response": []
@@ -137,12 +133,8 @@
             },
             "url": {
               "raw": "{{base}}/resend-otp",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "resend-otp"
-              ]
+              "host": ["{{base}}"],
+              "path": ["resend-otp"]
             }
           },
           "response": []
@@ -201,12 +193,8 @@
             },
             "url": {
               "raw": "{{base}}/verify-otp",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "verify-otp"
-              ]
+              "host": ["{{base}}"],
+              "path": ["verify-otp"]
             }
           },
           "response": []
@@ -240,9 +228,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "exec": [
-                  ""
-                ],
+                "exec": [""],
                 "type": "text/javascript",
                 "packages": {},
                 "requests": {}
@@ -325,12 +311,8 @@
             },
             "url": {
               "raw": "{{base}}/login",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "login"
-              ]
+              "host": ["{{base}}"],
+              "path": ["login"]
             },
             "description": "### Login Endpoint\n\nThis API endpoint allows the user to log in by providing the required credentials.\n\n#### Request Body\n\n- **email** (text) - The email address of the user.\n    \n\n#### Response\n\n- **status** - Indicates the status of the request.\n    \n- **message** - A message related to the request status.\n    \n- **code** - The status code of the response.\n    \n- **token_type** - The type of token received.\n    \n- **token** - The authentication token.\n    \n- **expires_in** - The expiration time of the token.\n    \n- **data** - Additional user data including id, name, email, phone, address, longitude, latitude, avatar, role, status, is_new, available, gender, and balance.\n    \n\n``` json\n{\n    \"status\": true,\n    \"message\": \"Login successful\",\n    \"code\": 200,\n    \"token_type\": \"bearer\",\n    \"token\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczovL3dlZ293b2xmLmNvbS9hcGkvbG9naW4iLCJpYXQiOjE3MzU5OTMxNjgsIm5iZiI6MTczNTk5MzE2OCwianRpIjoiZWdDM01VR0VhblNKTVhlOCIsInN1YiI6IjIiLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.HPzG1VLPQDZXx-OHpfAC2fUQI9aQ8m94-ufZZMPojpA\",\n    \"expires_in\": 0,\n    \"data\": {\n        \"id\": 2,\n        \"name\": \"User\",\n        \"email\": \"user@user.com\",\n        \"phone\": \"018895522\",\n        \"address\": null,\n        \"longitude\": null,\n        \"latitude\": null,\n        \"avatar\": \"https://wegowolf.com/uploads/user/avatar/1735703775-922-imgpsh-fullsize-anim-2-4.png\",\n        \"role\": \"customer\",\n        \"status\": \"active\",\n        \"is_new\": \"yes\",\n        \"available\": \"yes\",\n        \"gender\": \"male\",\n        \"balance\": \"0.00\"\n    }\n}\n\n ```"
           },
@@ -369,12 +351,8 @@
             },
             "url": {
               "raw": "{{base}}/forget-password",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "forget-password"
-              ]
+              "host": ["{{base}}"],
+              "path": ["forget-password"]
             }
           },
           "response": []
@@ -408,9 +386,7 @@
             {
               "listen": "prerequest",
               "script": {
-                "exec": [
-                  ""
-                ],
+                "exec": [""],
                 "type": "text/javascript",
                 "packages": {},
                 "requests": {}
@@ -445,12 +421,8 @@
             },
             "url": {
               "raw": "{{base}}/refresh-token",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "refresh-token"
-              ]
+              "host": ["{{base}}"],
+              "path": ["refresh-token"]
             }
           },
           "response": []
@@ -482,12 +454,8 @@
             },
             "url": {
               "raw": "{{base}}/logout",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "logout"
-              ]
+              "host": ["{{base}}"],
+              "path": ["logout"]
             }
           },
           "response": []
@@ -515,12 +483,8 @@
             ],
             "url": {
               "raw": "{{base}}/me",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "me"
-              ]
+              "host": ["{{base}}"],
+              "path": ["me"]
             }
           },
           "response": []
@@ -610,12 +574,8 @@
             },
             "url": {
               "raw": "{{base}}/update-profile",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "update-profile"
-              ]
+              "host": ["{{base}}"],
+              "path": ["update-profile"]
             }
           },
           "response": []
@@ -666,12 +626,8 @@
             },
             "url": {
               "raw": "{{base}}/change-password",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "change-password"
-              ]
+              "host": ["{{base}}"],
+              "path": ["change-password"]
             }
           },
           "response": []
@@ -712,12 +668,8 @@
             },
             "url": {
               "raw": "{{base}}/update-avatar",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "update-avatar"
-              ]
+              "host": ["{{base}}"],
+              "path": ["update-avatar"]
             }
           },
           "response": []
@@ -755,12 +707,8 @@
             },
             "url": {
               "raw": "{{base}}/otp-token",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "otp-token"
-              ]
+              "host": ["{{base}}"],
+              "path": ["otp-token"]
             }
           },
           "response": []
@@ -801,12 +749,8 @@
             },
             "url": {
               "raw": "{{base}}/reset-password",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "reset-password"
-              ]
+              "host": ["{{base}}"],
+              "path": ["reset-password"]
             }
           },
           "response": []
@@ -838,12 +782,8 @@
             },
             "url": {
               "raw": "{{base}}/delete-profile",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "delete-profile"
-              ]
+              "host": ["{{base}}"],
+              "path": ["delete-profile"]
             }
           },
           "response": []
@@ -874,13 +814,8 @@
             },
             "url": {
               "raw": "{{base}}/google/callback",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "google",
-                "callback"
-              ]
+              "host": ["{{base}}"],
+              "path": ["google", "callback"]
             }
           },
           "response": []
@@ -923,12 +858,8 @@
             },
             "url": {
               "raw": "{{base}}/social-login",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "social-login"
-              ]
+              "host": ["{{base}}"],
+              "path": ["social-login"]
             }
           },
           "response": []
@@ -961,13 +892,8 @@
             ],
             "url": {
               "raw": "{{base}}/subscription/plans",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "subscription",
-                "plans"
-              ]
+              "host": ["{{base}}"],
+              "path": ["subscription", "plans"]
             }
           },
           "response": []
@@ -1012,14 +938,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/setup-intent",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "setup-intent"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "setup-intent"]
             }
           },
           "response": []
@@ -1063,14 +983,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/create",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "create"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "create"]
             }
           },
           "response": []
@@ -1114,14 +1028,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/update",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "update"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "update"]
             }
           },
           "response": []
@@ -1153,14 +1061,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/cancel",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "cancel"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "cancel"]
             }
           },
           "response": []
@@ -1205,14 +1107,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/resume",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "resume"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "resume"]
             }
           },
           "response": []
@@ -1260,14 +1156,8 @@
             },
             "url": {
               "raw": "{{base}}/auth/subscription/status",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auth",
-                "subscription",
-                "status"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auth", "subscription", "status"]
             }
           },
           "response": []
@@ -1307,12 +1197,8 @@
             },
             "url": {
               "raw": "{{base}}/auction",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auction"
-              ],
+              "host": ["{{base}}"],
+              "path": ["auction"],
               "query": [
                 {
                   "key": "per_page",
@@ -1416,13 +1302,8 @@
             },
             "url": {
               "raw": "{{base}}/auction/filter-options",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auction",
-                "filter-options"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auction", "filter-options"]
             }
           },
           "response": []
@@ -1470,14 +1351,8 @@
             },
             "url": {
               "raw": "{{base}}/auction/{{auction_id}}/view",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auction",
-                "{{auction_id}}",
-                "view"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auction", "{{auction_id}}", "view"]
             }
           },
           "response": []
@@ -1509,14 +1384,8 @@
             },
             "url": {
               "raw": "{{base}}/auction/{{auction_id}}/save",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auction",
-                "{{auction_id}}",
-                "save"
-              ]
+              "host": ["{{base}}"],
+              "path": ["auction", "{{auction_id}}", "save"]
             }
           },
           "response": []
@@ -1547,13 +1416,8 @@
             ],
             "url": {
               "raw": "{{base}}/auction/saved",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "auction",
-                "saved"
-              ],
+              "host": ["{{base}}"],
+              "path": ["auction", "saved"],
               "query": [
                 {
                   "key": "per_page",
@@ -1650,12 +1514,8 @@
             "header": [],
             "url": {
               "raw": "{{base}}/settings",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "settings"
-              ]
+              "host": ["{{base}}"],
+              "path": ["settings"]
             }
           },
           "response": []
@@ -1667,14 +1527,8 @@
             "header": [],
             "url": {
               "raw": "{{base}}/home/random/auction",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "home",
-                "random",
-                "auction"
-              ]
+              "host": ["{{base}}"],
+              "path": ["home", "random", "auction"]
             }
           },
           "response": []
@@ -1686,12 +1540,8 @@
             "header": [],
             "url": {
               "raw": "{{base}}/countries",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "countries"
-              ]
+              "host": ["{{base}}"],
+              "path": ["countries"]
             }
           },
           "response": []
@@ -1703,12 +1553,8 @@
             "header": [],
             "url": {
               "raw": "{{base}}/states?country=us",
-              "host": [
-                "{{base}}"
-              ],
-              "path": [
-                "states"
-              ],
+              "host": ["{{base}}"],
+              "path": ["states"],
               "query": [
                 {
                   "key": "country",
@@ -1807,16 +1653,8 @@
         "url": {
           "raw": "https://www.bid4assets.com/channel/auctions/get",
           "protocol": "https",
-          "host": [
-            "www",
-            "bid4assets",
-            "com"
-          ],
-          "path": [
-            "channel",
-            "auctions",
-            "get"
-          ]
+          "host": ["www", "bid4assets", "com"],
+          "path": ["channel", "auctions", "get"]
         }
       },
       "response": []
@@ -1875,14 +1713,8 @@
         "url": {
           "raw": "https://graph.auction.com/graphql",
           "protocol": "https",
-          "host": [
-            "graph",
-            "auction",
-            "com"
-          ],
-          "path": [
-            "graphql"
-          ]
+          "host": ["graph", "auction", "com"],
+          "path": ["graphql"]
         }
       },
       "response": []
@@ -1941,14 +1773,8 @@
         "url": {
           "raw": "https://graph.auction.com/graphql",
           "protocol": "https",
-          "host": [
-            "graph",
-            "auction",
-            "com"
-          ],
-          "path": [
-            "graphql"
-          ]
+          "host": ["graph", "auction", "com"],
+          "path": ["graphql"]
         }
       },
       "response": []
@@ -1998,17 +1824,8 @@
         "url": {
           "raw": "https://api.realtybid.com/public/property/819998/details",
           "protocol": "https",
-          "host": [
-            "api",
-            "realtybid",
-            "com"
-          ],
-          "path": [
-            "public",
-            "property",
-            "819998",
-            "details"
-          ]
+          "host": ["api", "realtybid", "com"],
+          "path": ["public", "property", "819998", "details"]
         }
       },
       "response": []
@@ -2063,16 +1880,8 @@
         "url": {
           "raw": "https://api.realtybid.com/public/search/listings?pageSize=100&currentPage=1",
           "protocol": "https",
-          "host": [
-            "api",
-            "realtybid",
-            "com"
-          ],
-          "path": [
-            "public",
-            "search",
-            "listings"
-          ],
+          "host": ["api", "realtybid", "com"],
+          "path": ["public", "search", "listings"],
           "query": [
             {
               "key": "pageSize",
@@ -2108,16 +1917,8 @@
         "url": {
           "raw": "https://www.bid4assets.com/auction/index/1270230",
           "protocol": "https",
-          "host": [
-            "www",
-            "bid4assets",
-            "com"
-          ],
-          "path": [
-            "auction",
-            "index",
-            "1270230"
-          ]
+          "host": ["www", "bid4assets", "com"],
+          "path": ["auction", "index", "1270230"]
         }
       },
       "response": []
@@ -2133,9 +1934,7 @@
         "type": "text/javascript",
         "packages": {},
         "requests": {},
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     },
     {
@@ -2144,9 +1943,7 @@
         "type": "text/javascript",
         "packages": {},
         "requests": {},
-        "exec": [
-          ""
-        ]
+        "exec": [""]
       }
     }
   ],

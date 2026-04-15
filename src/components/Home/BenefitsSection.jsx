@@ -31,7 +31,7 @@ function BenefitsSection({ benefits }) {
           ))}
         </div>
         <img
-          src="../public/Benefitsectionimage.png"
+          src="/Benefitsectionimage.png"
           alt="business discussion"
           className="h-auto w-full max-w-md rounded-lg object-cover sm:max-w-lg"
         />

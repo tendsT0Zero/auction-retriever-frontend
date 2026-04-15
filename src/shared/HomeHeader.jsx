@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import homeLogo from "../../public/app-logo-auction-retriver.png";
 import { useState, useEffect } from "react";
 import { authStorage } from "../services/authService";
 
@@ -28,7 +27,7 @@ export default function HomeHeader() {
         {/* left side */}
         <Link to="/">
           <img
-            src={homeLogo}
+            src="/app-logo-auction-retriver.png"
             alt="Auction Retriever"
             className="h-10 w-auto object-contain sm:h-12"
           />

@@ -17,7 +17,7 @@ function Hero2({ isAuthenticated = false }) {
       {/* Hero image */}
 
       <img
-        src="../public/illustration.png"
+        src="/illustration.png"
         alt="Modern building"
         className="absolute right-0 top-0 hidden h-full w-auto object-cover md:block"
       />

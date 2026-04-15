@@ -22,28 +22,28 @@ function HomeFooter() {
           <div className="flex flex-wrap items-center justify-center gap-4 sm:justify-start">
             <Link to={"#"}>
               <img
-                src="../public/fblogo.png"
+                src="/fblogo.png"
                 alt="Facebook"
                 className="h-6 w-6"
               />
             </Link>
             <Link to={"#"}>
               <img
-                src="../public/XLogo.png"
+                src="/XLogo.png"
                 alt="Twitter"
                 className="h-6 w-6"
               />
             </Link>
             <Link to={"#"}>
               <img
-                src="../public/InstagramLogo.png"
+                src="/InstagramLogo.png"
                 alt="Instagram"
                 className="h-6 w-6"
               />
             </Link>
             <Link to={"#"}>
               <img
-                src="../public/linkedin-icon.png"
+                src="/linkedin-icon.png"
                 alt="LinkedIn"
                 className="h-6 w-6"
               />
